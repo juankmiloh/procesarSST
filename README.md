@@ -1,5 +1,7 @@
 # procesarSST
 
+Proyecto web para el manejo de seguridad y salud en el trabajo de la empresa MONTAJES Y PROCESOS MP SAS
+
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
 version 0.16.0.
 
