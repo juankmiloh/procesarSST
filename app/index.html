@@ -21,42 +21,101 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
+    <div ng-include="'views/header.html'"></div>
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
 
-            <a class="navbar-brand" href="#!/">procesarSst</a>
+
+    
+
+    <div ng-controller="AppCtrl" layout="column" style="height:500px;" ng-cloak>
+
+      <section layout="row" flex>
+
+        <md-sidenav
+            class="md-sidenav-left"
+            md-component-id="left"
+            md-is-locked-open="$mdMedia('gt-md')"
+            md-whiteframe="4">
+
+          <md-toolbar class="md-theme-indigo">
+            <h1 class="md-toolbar-tools">Sidenav Left</h1>
+          </md-toolbar>
+          <md-content layout-padding ng-controller="LeftCtrl">
+            <md-button ng-click="close()" class="md-primary" hide-gt-md>
+              Close Sidenav Left
+            </md-button>
+            <p hide show-gt-md>
+              This sidenav is locked open on your device. To go back to the default behavior,
+              narrow your display.
+            </p>
+          </md-content>
+
+        </md-sidenav>
+
+        <md-content flex layout-padding>
+
+          <div layout="column" layout-align="top center">
+            <p>
+            The left sidenav will 'lock open' on a medium (>=960px wide) device.
+            </p>
+            <p>
+            The right sidenav will focus on a specific child element.
+            </p>
+
+            <div>
+              <md-button ng-click="toggleLeft()"
+                class="md-primary" hide-gt-md>
+                Toggle left
+              </md-button>
+            </div>
+
+            <div>
+              <md-button ng-click="toggleRight()"
+                ng-hide="isOpenRight()"
+                class="md-primary">
+                Toggle right
+              </md-button>
+            </div>
           </div>
 
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
+          <div flex></div>
 
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#!/">Home</a></li>
-              <li><a ng-href="#!/about">Acerca de</a></li>
-              <li><a ng-href="#!/">Contacto</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+        </md-content>
+
+        <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
+
+          <md-toolbar class="md-theme-light">
+            <h1 class="md-toolbar-tools">Sidenav Right</h1>
+          </md-toolbar>
+          <md-content ng-controller="RightCtrl" layout-padding>
+            <form>
+              <md-input-container>
+                <label for="testInput">Test input</label>
+                <input type="text" id="testInput"
+                       ng-model="data" md-autofocus>
+              </md-input-container>
+            </form>
+            <md-button ng-click="close()" class="md-primary">
+              Close Sidenav Right
+            </md-button>
+          </md-content>
+
+        </md-sidenav>
+
+      </section>
+
     </div>
+
+
+
+
+
 
     <div class="container">
       <div ng-view=""></div>
     </div>
 
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
-    </div>
+    <div ng-include="'views/footer.html'"></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
